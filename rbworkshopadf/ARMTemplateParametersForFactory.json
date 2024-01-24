@@ -14,11 +14,17 @@
 		"DestinationContainer_connectionString": {
 			"value": ""
 		},
+		"LabNotebook_accessToken": {
+			"value": ""
+		},
 		"AzureDataLakeStorage1_properties_typeProperties_url": {
 			"value": "https://rbworkshopblob.dfs.core.windows.net/"
 		},
 		"PublicDataset_sasUri": {
 			"value": ""
+		},
+		"LabNotebook_properties_typeProperties_existingClusterId": {
+			"value": "0124-090530-st0g04qr"
 		}
 	}
 }
