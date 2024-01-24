@@ -23,17 +23,25 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'accessToken' of 'LabNotebook'"
 		},
+		"AzureBlobStorage2_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureBlobStorage2'"
+		},
+		"AzureSqlDatabase1_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureSqlDatabase1'"
+		},
 		"AzureDataLakeStorage1_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://rbworkshopblob.dfs.core.windows.net/"
 		},
-		"PublicDataset_sasUri": {
-			"type": "secureString",
-			"metadata": "Secure string for 'sasUri' of 'PublicDataset'"
-		},
 		"LabNotebook_properties_typeProperties_existingClusterId": {
 			"type": "string",
 			"defaultValue": "0124-090530-st0g04qr"
+		},
+		"PublicDataset_sasUri": {
+			"type": "secureString",
+			"metadata": "Secure string for 'sasUri' of 'PublicDataset'"
 		},
 		"containerUri": {
 			"type": "string",
@@ -74,14 +82,20 @@
 					"LabNotebook_accessToken": {
 						"value": "[parameters('LabNotebook_accessToken')]"
 					},
+					"AzureBlobStorage2_connectionString": {
+						"value": "[parameters('AzureBlobStorage2_connectionString')]"
+					},
+					"AzureSqlDatabase1_connectionString": {
+						"value": "[parameters('AzureSqlDatabase1_connectionString')]"
+					},
 					"AzureDataLakeStorage1_properties_typeProperties_url": {
 						"value": "[parameters('AzureDataLakeStorage1_properties_typeProperties_url')]"
 					},
-					"PublicDataset_sasUri": {
-						"value": "[parameters('PublicDataset_sasUri')]"
-					},
 					"LabNotebook_properties_typeProperties_existingClusterId": {
 						"value": "[parameters('LabNotebook_properties_typeProperties_existingClusterId')]"
+					},
+					"PublicDataset_sasUri": {
+						"value": "[parameters('PublicDataset_sasUri')]"
 					}
 				}
 			},
