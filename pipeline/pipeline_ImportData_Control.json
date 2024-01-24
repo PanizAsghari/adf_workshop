@@ -44,6 +44,48 @@
 						"value": "@equals(activity('Lookup1').output.firstRow,0)",
 						"type": "Expression"
 					},
+					"ifFalseActivities": [
+						{
+							"name": "usp_TruncateProductStaging",
+							"type": "SqlServerStoredProcedure",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"storedProcedureName": "[SalesLT].[usp_TruncateProductStaging]"
+							},
+							"linkedServiceName": {
+								"referenceName": "AzureSqlDatabase1",
+								"type": "LinkedServiceReference"
+							}
+						},
+						{
+							"name": "Execute Pipelineon false",
+							"type": "ExecutePipeline",
+							"dependsOn": [
+								{
+									"activity": "usp_TruncateProductStaging",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "pipeline_ImportData",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true
+							}
+						}
+					],
 					"ifTrueActivities": [
 						{
 							"name": "Execute Pipeline on true",
