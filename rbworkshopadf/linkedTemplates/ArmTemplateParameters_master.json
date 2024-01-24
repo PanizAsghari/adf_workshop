@@ -11,8 +11,14 @@
 		"AzureDataLakeStorage1_accountKey": {
 			"value": ""
 		},
+		"DestinationContainer_connectionString": {
+			"value": ""
+		},
 		"AzureDataLakeStorage1_properties_typeProperties_url": {
 			"value": "https://rbworkshopblob.dfs.core.windows.net/"
+		},
+		"PublicDataset_sasUri": {
+			"value": ""
 		},
 		"containerUri": {
 			"value": ""
