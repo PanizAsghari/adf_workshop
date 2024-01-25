@@ -8,7 +8,13 @@
 		"AzureBlobStorage1_connectionString": {
 			"value": ""
 		},
+		"AzureBlobStorage2_connectionString": {
+			"value": ""
+		},
 		"AzureDataLakeStorage1_accountKey": {
+			"value": ""
+		},
+		"AzureSqlDatabase1_connectionString": {
 			"value": ""
 		},
 		"DestinationContainer_connectionString": {
@@ -17,10 +23,7 @@
 		"LabNotebook_accessToken": {
 			"value": ""
 		},
-		"AzureBlobStorage2_connectionString": {
-			"value": ""
-		},
-		"AzureSqlDatabase1_connectionString": {
+		"module5_connectionString": {
 			"value": ""
 		},
 		"AzureDataLakeStorage1_properties_typeProperties_url": {
