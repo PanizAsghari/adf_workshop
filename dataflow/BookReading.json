@@ -33,6 +33,15 @@
 				},
 				{
 					"name": "AddReaderNameK"
+				},
+				{
+					"name": "AllReaders"
+				},
+				{
+					"name": "SortReadingHistory"
+				},
+				{
+					"name": "join1"
 				}
 			],
 			"scriptLines": [
@@ -90,7 +99,15 @@
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> KeikosHistory",
 				"TrixiesHistory derive(Reader = 'Trixie Belden') ~> AddReaderNameT",
-				"KeikosHistory derive(Reader = 'Keiko Brooks') ~> AddReaderNameK"
+				"KeikosHistory derive(Reader = 'Keiko Brooks') ~> AddReaderNameK",
+				"AddReaderNameT, AddReaderNameK union(byName: true)~> AllReaders",
+				"AllReaders sort(asc(Book_Id, true)) ~> SortReadingHistory",
+				"SortReadingHistory, bookscsv join(AllReaders@Book_Id == bookscsv@Book_Id",
+				"     && AllReaders@ISBN == bookscsv@ISBN,",
+				"     joinType:'inner',",
+				"     matchType:'exact',",
+				"     ignoreSpaces: false,",
+				"     broadcast: 'auto')~> join1"
 			]
 		}
 	}
