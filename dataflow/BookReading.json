@@ -26,7 +26,15 @@
 					"name": "KeikosHistory"
 				}
 			],
-			"sinks": [],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "ReadersBooksInnerJoin",
+						"type": "DatasetReference"
+					},
+					"name": "ReadersBooksInnerJoin"
+				}
+			],
 			"transformations": [
 				{
 					"name": "AddReaderNameT"
@@ -42,6 +50,9 @@
 				},
 				{
 					"name": "join1"
+				},
+				{
+					"name": "RemoveDuplicateColumns"
 				}
 			],
 			"scriptLines": [
@@ -107,7 +118,37 @@
 				"     joinType:'inner',",
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
-				"     broadcast: 'auto')~> join1"
+				"     broadcast: 'auto')~> join1",
+				"join1 select(mapColumn(",
+				"          My_Rating,",
+				"          Date_Read,",
+				"          Date_Added,",
+				"          Bookshelves,",
+				"          Exclusive_Shelf,",
+				"          My_Review,",
+				"          Spoiler,",
+				"          Private_Notes,",
+				"          Read_Count,",
+				"          Original_Purchase_Date,",
+				"          Reader,",
+				"          Book_Id = bookscsv@Book_Id,",
+				"          Title,",
+				"          Author,",
+				"          {Author_l-f},",
+				"          Additional_Authors,",
+				"          Average_Rating,",
+				"          Publisher,",
+				"          Binding,",
+				"          Number_of_Pages,",
+				"          Year_Published,",
+				"          Original_Publication_Year",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> RemoveDuplicateColumns",
+				"RemoveDuplicateColumns sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> ReadersBooksInnerJoin"
 			]
 		}
 	}
